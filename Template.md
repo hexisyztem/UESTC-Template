@@ -1084,6 +1084,89 @@ $p$ 不是素数，且 $p = \prod p_{i}^{\alpha_i}, p_i \in prime$ 时， 求出
 关于 $C_{n}^{m} \; mod \; {p_i}^{\alpha_i}$, 我们可以考虑计算 $n! \; mod \; {p_i}^{\alpha_i}$, $m! \; mod \; {p_i}^{\alpha_i}$, $(n-m)! \; mod \; {p_i}^{\alpha_i}$。
 比如计算 $10! \; mod \; 3$, 相当于计算 $1 * 2 * 1 * 4 * 5 * 2 * 7 * 8 * 1 * 10 * 3^{4} \; mod \; 3$。
 
+``` C++
+#include<bits/stdc++.h>
+
+using namespace std;
+
+typedef long long ll;
+
+ll exgcd(ll a,ll b,ll &x,ll &y)
+{
+    if(!b){x=1;y=0;return a;}
+    ll res=exgcd(b,a%b,x,y),t;
+    t=x;x=y;y=t-a/b*y;
+    return res;
+}
+
+ll p;
+
+inline ll power(ll a,ll b,ll mod)
+{
+    ll sm;
+    for(sm=1;b;b>>=1,a=a*a%mod)if(b&1)
+        sm=sm*a%mod;
+    return sm;
+}
+
+ll fac(ll n,ll pi,ll pk)
+{
+    if(!n)return 1;
+    ll res=1;
+    for(register ll i=2;i<=pk;++i)
+        if(i%pi)(res*=i)%=pk;
+    res=power(res,n/pk,pk);
+    for(register ll i=2;i<=n%pk;++i)
+        if(i%pi)(res*=i)%=pk;
+    return res*fac(n/pi,pi,pk)%pk;
+}
+
+inline ll inv(ll n,ll mod)
+{
+    ll x,y;
+    exgcd(n,mod,x,y);
+    return (x+=mod)>mod?x-mod:x;
+}
+
+inline ll CRT(ll b,ll mod){return b*inv(p/mod,mod)%p*(p/mod)%p;}
+
+const int MAXN=11;
+
+static ll n,m;
+
+static ll w[MAXN];
+
+inline ll C(ll n,ll m,ll pi,ll pk)
+{
+    ll up=fac(n,pi,pk),d1=fac(m,pi,pk),d2=fac(n-m,pi,pk);
+    ll k=0;
+    for(register ll i=n;i;i/=pi)k+=i/pi;
+    for(register ll i=m;i;i/=pi)k-=i/pi;
+    for(register ll i=n-m;i;i/=pi)k-=i/pi;
+    return up*inv(d1,pk)%pk*inv(d2,pk)%pk*power(pi,k,pk)%pk;
+}
+
+inline ll exlucus(ll n,ll m)
+{
+    ll res=0,tmp=p,pk;
+    static int lim=sqrt(p)+5;
+    for(register int i=2;i<=lim;++i)if(tmp%i==0)
+    {
+        pk=1;while(tmp%i==0)pk*=i,tmp/=i;
+        (res+=CRT(C(n,m,i,pk),pk))%=p;
+    }
+    if(tmp>1)(res+=CRT(C(n,m,tmp,tmp),tmp))%=p;
+    return res;
+}
+
+int main()
+{
+    scanf("%lld%lld%d",&n,&m,&p);
+    printf("%d\n",exlucus(n,m));
+    return 0;
+}
+```
+
 ## 中国剩余定理
 
 
