@@ -1,14 +1,3 @@
-<!-- <div align=center>
-<img src="th1.jpeg" width="120%" height="120%">
-</div>
-
-<div align=center>
-<font size=10>UESTC-hexisyztem</font>
-</div>
-
-<div STYLE="page-break-after: always;">
-</div> -->
-
 > UESTC_Default ---- hexisyztem
 > 未测试版本
 
@@ -22,13 +11,9 @@
   - [Manacher](#manacher)
   - [最小表示 (待更新)](#%e6%9c%80%e5%b0%8f%e8%a1%a8%e7%a4%ba-%e5%be%85%e6%9b%b4%e6%96%b0)
 - [数学部分](#%e6%95%b0%e5%ad%a6%e9%83%a8%e5%88%86)
+  - [BSGS 大步-小步](#bsgs-%e5%a4%a7%e6%ad%a5-%e5%b0%8f%e6%ad%a5)
   - [MillerRabbin 素数测定](#millerrabbin-%e7%b4%a0%e6%95%b0%e6%b5%8b%e5%ae%9a)
   - [Pollard-Rho算法 (大整数质因子分解)](#pollard-rho%e7%ae%97%e6%b3%95-%e5%a4%a7%e6%95%b4%e6%95%b0%e8%b4%a8%e5%9b%a0%e5%ad%90%e5%88%86%e8%a7%a3)
-  - [矩阵相关](#%e7%9f%a9%e9%98%b5%e7%9b%b8%e5%85%b3)
-    - [矩阵的逆](#%e7%9f%a9%e9%98%b5%e7%9a%84%e9%80%86)
-    - [Gauss 消元](#gauss-%e6%b6%88%e5%85%83)
-  - [循环矩阵](#%e5%be%aa%e7%8e%af%e7%9f%a9%e9%98%b5)
-    - [快速求解循环矩阵乘积](#%e5%bf%ab%e9%80%9f%e6%b1%82%e8%a7%a3%e5%be%aa%e7%8e%af%e7%9f%a9%e9%98%b5%e4%b9%98%e7%a7%af)
   - [扩展欧拉定理](#%e6%89%a9%e5%b1%95%e6%ac%a7%e6%8b%89%e5%ae%9a%e7%90%86)
   - [类欧几里德算法](#%e7%b1%bb%e6%ac%a7%e5%87%a0%e9%87%8c%e5%be%b7%e7%ae%97%e6%b3%95)
   - [线性基](#%e7%ba%bf%e6%80%a7%e5%9f%ba)
@@ -65,29 +50,32 @@
   - [树上依赖背包(待更新)](#%e6%a0%91%e4%b8%8a%e4%be%9d%e8%b5%96%e8%83%8c%e5%8c%85%e5%be%85%e6%9b%b4%e6%96%b0)
   - [可逆背包(待更新)](#%e5%8f%af%e9%80%86%e8%83%8c%e5%8c%85%e5%be%85%e6%9b%b4%e6%96%b0)
   - [SOSdp](#sosdp)
+  - [wqs二分](#wqs%e4%ba%8c%e5%88%86)
 - [图论](#%e5%9b%be%e8%ae%ba)
-  - [虚树](#%e8%99%9a%e6%a0%91)
-  - [树哈希 (待更新)](#%e6%a0%91%e5%93%88%e5%b8%8c-%e5%be%85%e6%9b%b4%e6%96%b0)
-  - [斯坦纳树 (待更新)](#%e6%96%af%e5%9d%a6%e7%ba%b3%e6%a0%91-%e5%be%85%e6%9b%b4%e6%96%b0)
+  - [斯坦纳树](#%e6%96%af%e5%9d%a6%e7%ba%b3%e6%a0%91)
   - [支配树(待更新)](#%e6%94%af%e9%85%8d%e6%a0%91%e5%be%85%e6%9b%b4%e6%96%b0)
-  - [prufer 序列 (待更新)](#prufer-%e5%ba%8f%e5%88%97-%e5%be%85%e6%9b%b4%e6%96%b0)
-  - [LGV 引理 (待更新)](#lgv-%e5%bc%95%e7%90%86-%e5%be%85%e6%9b%b4%e6%96%b0)
   - [二分图匹配问题](#%e4%ba%8c%e5%88%86%e5%9b%be%e5%8c%b9%e9%85%8d%e9%97%ae%e9%a2%98)
     - [最长反链(待更新)](#%e6%9c%80%e9%95%bf%e5%8f%8d%e9%93%be%e5%be%85%e6%9b%b4%e6%96%b0)
     - [霍尔定理](#%e9%9c%8d%e5%b0%94%e5%ae%9a%e7%90%86)
     - [最小点覆盖方案构造](#%e6%9c%80%e5%b0%8f%e7%82%b9%e8%a6%86%e7%9b%96%e6%96%b9%e6%a1%88%e6%9e%84%e9%80%a0)
+    - [HopcroftKarp算法(二分图匹配)](#hopcroftkarp%e7%ae%97%e6%b3%95%e4%ba%8c%e5%88%86%e5%9b%be%e5%8c%b9%e9%85%8d)
 - [数据结构](#%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84)
   - [双栈模拟 (待更新)](#%e5%8f%8c%e6%a0%88%e6%a8%a1%e6%8b%9f-%e5%be%85%e6%9b%b4%e6%96%b0)
+  - [虚树 (待整理)](#%e8%99%9a%e6%a0%91-%e5%be%85%e6%95%b4%e7%90%86)
   - [长链剖分(待更新)](#%e9%95%bf%e9%93%be%e5%89%96%e5%88%86%e5%be%85%e6%9b%b4%e6%96%b0)
+    - [求距离为k的儿子个数(入点的时候减去，离开的时候加)](#%e6%b1%82%e8%b7%9d%e7%a6%bb%e4%b8%bak%e7%9a%84%e5%84%bf%e5%ad%90%e4%b8%aa%e6%95%b0%e5%85%a5%e7%82%b9%e7%9a%84%e6%97%b6%e5%80%99%e5%87%8f%e5%8e%bb%e7%a6%bb%e5%bc%80%e7%9a%84%e6%97%b6%e5%80%99%e5%8a%a0)
   - [可持久化数据结构](#%e5%8f%af%e6%8c%81%e4%b9%85%e5%8c%96%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84)
+  - [区间LCM](#%e5%8c%ba%e9%97%b4lcm)
 - [几何](#%e5%87%a0%e4%bd%95)
 - [杂项](#%e6%9d%82%e9%a1%b9)
     - [long long范围内任意模数乘法(利用自然溢出)](#long-long%e8%8c%83%e5%9b%b4%e5%86%85%e4%bb%bb%e6%84%8f%e6%a8%a1%e6%95%b0%e4%b9%98%e6%b3%95%e5%88%a9%e7%94%a8%e8%87%aa%e7%84%b6%e6%ba%a2%e5%87%ba)
     - [状态压缩下的子集枚举](#%e7%8a%b6%e6%80%81%e5%8e%8b%e7%bc%a9%e4%b8%8b%e7%9a%84%e5%ad%90%e9%9b%86%e6%9e%9a%e4%b8%be)
-
-
------
-
+    - [股票问题](#%e8%82%a1%e7%a5%a8%e9%97%ae%e9%a2%98)
+    - [思维是否各维度可以独立](#%e6%80%9d%e7%bb%b4%e6%98%af%e5%90%a6%e5%90%84%e7%bb%b4%e5%ba%a6%e5%8f%af%e4%bb%a5%e7%8b%ac%e7%ab%8b)
+    - [位运算问题](#%e4%bd%8d%e8%bf%90%e7%ae%97%e9%97%ae%e9%a2%98)
+    - [极大区间统计(问区间内有多少个子段)](#%e6%9e%81%e5%a4%a7%e5%8c%ba%e9%97%b4%e7%bb%9f%e8%ae%a1%e9%97%ae%e5%8c%ba%e9%97%b4%e5%86%85%e6%9c%89%e5%a4%9a%e5%b0%91%e4%b8%aa%e5%ad%90%e6%ae%b5)
+    - [找规律](#%e6%89%be%e8%a7%84%e5%be%8b)
+    - [求N(1<=1e18)项数列的值](#%e6%b1%82n11e18%e9%a1%b9%e6%95%b0%e5%88%97%e7%9a%84%e5%80%bc)
 
 # 字符串部分
 
@@ -315,6 +303,9 @@ struct Manacher{
 
 # 数学部分
 
+## BSGS 大步-小步
+注意可以不平衡分块，考虑多组询问的情况下。
+
 ## MillerRabbin 素数测定
 
 每次测定正确率为 $75\%$，在进行 $TestTime$ 次测定后，错误率将降到 $0.25 ^ {TestTime}$
@@ -422,111 +413,6 @@ void find(long long n, int c) {
     find(n/p, k);
 }
 ```
-## 矩阵相关
-
-### 矩阵的逆
-
-> *f &nbsp; : &nbsp; 输入矩阵
-> *g &nbsp; : &nbsp; 输出矩阵，f 矩阵的逆矩阵
-``` C++
-void inverse(){
-    double temp;
-    memset(g, 0, sizeof(g));
-    for(int i = 0;i < n; i++) g[i][i] = 1.0;
-    for(int i = 0;i < n; i++){
-        for(int j = i;j < n; j++){
-            if(fabs(f[j][i]) > eps){
-                for(int k = 0;k < n; k++){
-                    swap(f[i][k],f[j][k]);
-                    swap(g[i][k],g[j][k]);
-                }
-                break;
-            }
-        }
-        temp = f[i][i];
-        for(int k = 0;k < n; k++)
-        {
-            f[i][k] /= temp;
-            g[i][k] /= temp;
-        }
-        for(int j = 0;j < n; j++)
-        {
-            if(j != i && fabs(f[j][i]) > eps)
-            {
-                temp = f[j][i];
-                for(int k = 0;k < n; k++){
-                    g[j][k] -= g[i][k] * temp;
-                    f[j][k] -= f[i][k] * temp;
-                }
-            }
-        }
-    }
-}
-```
-
-### Gauss 消元
-``` C++
-double a[maxn][maxn],ans[maxn];
-bool l[maxn];
-// 输入矩阵大小，返回解空间维数，维数为0表示解唯一
-// l[i]为true表示该数解唯一
-int Gauss(int n) {
-    int i,j,k,res = 0,r = 0;
-    for(i = 0;i < n; i++) l[i] = false;
-    for(i = 0;i < n; i++) {
-        for(j = r;j < n; j++) {
-            if(fabs(a[j][i]) > eps) {
-                for(k = i;k <= n; k++) swap(a[j][k],a[r][k]);
-                break;
-            }
-        }
-        if(fabs(a[r][i]) < eps) {
-            res++;
-            continue;
-        }
-        for(j = 0;j < n; j++) {
-            if(j != r && fabs(a[j][i] / a[r][i]) > eps) {
-                double tmp = a[j][i] / a[r][i];
-                for(k = i;k <= n; k++) a[j][k] -= tmp * a[r][k];
-            }
-        }
-        l[i] = true;
-        r++;
-    }
-    for(i = 0;i < n; i++) {
-        if(l[i]) {
-            for(j = 0;j < n; j++) {
-                if(fabs(a[j][i]) > 0) ans[i] = a[j][n] / a[j][i];
-            }
-        }
-    }
-    return res;
-}
-```
-
-## 循环矩阵
-定义:第i行的向量为第i−1行的向量的各元素依次右移一位得到的结果
-例如：
-
-$$
-\begin{aligned}
-a_0 & & a_1 & & a_2 \\
-a_2 & & a_0 & & a_1 \\
-a_1 & & a_2 & & a_0 \\
-\end{aligned} 
-$$
-
-性质:两个循环矩阵的乘积仍是循环矩阵
-
-### 快速求解循环矩阵乘积
-设有 $n*n$ 的循环矩阵 $A,B$，求 $A*B=C$
-定义 $f(x)= \sum_{i=0}^{n−1} a_i * x^i, g(x)= \sum_{i=0}^{n−1} b_i * x^i$
-其中 $a_i, b_i$ 分别为矩阵 $A,B$ 第一行的元素
-设 $h(x)=f(x)*g(x)= \sum_{i=0}^{n-1}c_i * x_i, c_i = \sum_{(j+k)\%n=i}a_j*b_k$(即循环卷积)
-则 $h(x)$ 的系数即为矩阵 $C$ 的第一行的元素
-故求 $A^m$ 即为求 $f(x)^m$,多项式快速幂即可
-
-对于长度为 $2$ 的幂的多项式的 $m$ 次循环卷积,可以直接以当前长度作为 $fft$ 长度,不需要满足2倍关系
 
 ## 扩展欧拉定理
 
@@ -1088,10 +974,228 @@ $p$ 不是素数，且 $p = \prod p_{i}^{\alpha_i}, p_i \in prime$ 时， 求出
 ## SOSdp
 > https://blog.csdn.net/weixin_38686780/article/details/100109753
 
+## wqs二分
+将区间分成m段，每段的代价是x^2，用wqs二分处理m，剩下的部分使用斜率优化来做。
+```
+#include <bits/stdc++.h>
+#define mid ((L + R) >> 1)
+using namespace std;
+const int N = 3005;
+typedef long long LL;
+int n, m;
+LL s[N], f[N], g[N];
+int q[N], l, r;
+inline LL sqr(LL x) { return 1LL * x * x; }
+LL k(int a, int b) { return f[a] + sqr(s[a]) - f[b] - sqr(s[b]); }
+int check(LL t) {
+	q[0] = 0;
+	l = 0;
+	r = 1;
+	for (int i = 1; i <= n; ++i) {
+		while (r - l > 1 &&
+		       (k(q[l + 1], q[l]) < 2 * s[i] * (s[q[l + 1]] - s[q[l]]) ||
+		        (k(q[l + 1], q[l]) == 2 * s[i] * (s[q[l + 1]] - s[q[l]]) &&
+		         g[q[l + 1]] <= g[q[l]]))) {
+			l++;
+		}
+		f[i] = t + f[q[l]] + sqr(s[i] - s[q[l]]);
+		g[i] = g[q[l]] + 1;
+		while (r - l > 1 &&
+		       (k(q[r - 1], q[r - 2]) * (s[i] - s[q[r - 1]]) >
+		            k(i, q[r - 1]) * (s[q[r - 1]] - s[q[r - 2]]) ||
+		        (k(q[r - 1], q[r - 2]) * (s[i] - s[q[r - 1]]) ==
+		             k(i, q[r - 1]) * (s[q[r - 1]] - s[q[r - 2]]) &&
+		         g[q[r - 1]] >= g[i]))) {
+			r--;
+		}
+		q[r++] = i;
+	}
+	return g[n];
+}
+int main() {
+	scanf("%d%d", &n, &m);
+	for (int i = 1; i <= n; ++i) {
+		scanf("%lld", &s[i]);
+		s[i] += s[i - 1];
+	}
+	LL L = 0, R = sqr(s[n]);
+	while (L < R) {
+		if (check(mid) > m) {
+			L = mid + 1;
+		} else {
+			R = mid;
+		}
+	}
+	check(L);
+	printf("%lld\n", m * (f[n] - m * L) - sqr(s[n]));
+	return 0;
+}
+```
+区间的代价是
+```
+#include <bits/stdc++.h>
+#define calc(x, y) f[x] + dis[x + 1][y]
+using namespace std;
+const int N = 3005;
+typedef long long LL;
+int n, m, a[N], pre[N], dis[N][N], f[N], g[N], q[N];
+int check(int o) {
+	int L = 0, R = 1;
+	q[0] = 0;
+	a[0] = n;
+	for (int i = 1; i <= n; ++i) {
+		f[i] = calc(q[L], i) + o;
+		g[i] = g[q[L]] + 1;
+		if (a[L] == i) L++;
+		while (L < R) {
+			int l = (L + 1 == R) ? i + 1 : a[R - 2] + 1;
+			if (calc(q[R - 1], l) > calc(i, l)) {
+				R--;
+			} else
+				break;
+		}
+		if (L == R) {
+			q[R] = i;
+			a[R++] = n;
+		} else if (calc(q[R - 1], n) > calc(i, n)) {
+			int l = (L + 1 == R) ? i + 1 : a[R - 2] + 1;
+			int r = n;
+			while (l < r) {
+				int mid = (l + r + 1) >> 1;
+				if (calc(q[R - 1], mid) > calc(i, mid)) {
+					r = mid - 1;
+				} else {
+					l = mid;
+				}
+			}
+			a[R - 1] = l;
+			q[R] = i;
+			a[R++] = n;
+		}
+	}
+	return g[n];
+}
+int main() {
+    scanf("%d%d", &n, &m);
+	for (int i = 1; i <= n; ++i) {
+		scanf("%d", &a[i]);
+	}
+	sort(a + 1, a + n + 1);
+	for (int i = 1; i <= n; ++i) {
+		pre[i] = pre[i - 1] + a[i];
+	}
+	for (int i = 1; i <= n; ++i) {
+		for (int j = i; j <= n; ++j) {
+			int mid = (i + j) >> 1;
+			dis[i][j] = (mid - i) * a[mid] - pre[mid - 1] + pre[i - 1];
+			dis[i][j] += pre[j] - pre[mid] - (j - mid) * a[mid];
+		}
+	}
+	int L = 0, R = 1e7;
+	while (L < R) {
+		int mid = (L + R) >> 1;
+		if (check(mid) > m) {
+			L = mid + 1;
+		} else {
+			R = mid;
+		}
+	}
+	check(L);
+	printf("%d\n", f[n] - m * L);
+	return 0;
+}
+```
 # 图论
+## 斯坦纳树
+最小生成树是在给定的点集和边中寻求最短网络使所有点连通。而最小斯坦纳树允许在给定点外增加额外的点，使生成的最短网络开销最小。
 
+## 支配树(待更新)
 
-## 虚树
+## 二分图匹配问题
+
+### 最长反链(待更新)
+
+### 霍尔定理
+
+二分图一侧的子图$V$有完全匹配，当且仅当对$V$的任意子集$A$,和$A$直接相连的点的个数大于等于$A$的点的个数。
+如果一个点集$S$满足上述条件,那么它一定是一个完美匹配的子集。
+霍尔定理也可以求匹配数:$|V| - max(|A| - T(A))$,$T(A)$是指另一侧中和$A$直接相连的点的个数。
+
+### 最小点覆盖方案构造
+对二分图做完最大匹配后，从左侧所有未被匹配的点出发，每次从左往右走一条未被匹配的边，从右往左走一条被匹配的边，沿途打标记。最终选择左边所有未被标记的点，加上右边所有被标记的点，此点集可作为一组最小点覆盖方案。其补集可作为一组最大点独立集方案。
+
+### HopcroftKarp算法(二分图匹配)
+```
+O(nsqrt(m)) be careful init
+const int maxN = 55 * 55;
+const int maxM = 55 * 55;
+struct HopcroftKarp {
+	int vis[maxN], level[maxN], ml[maxN], mr[maxM];
+	vector<int> edge[maxN];  // constructing edges for left part only
+
+	void init(int n) {
+		for (int i = 1; i <= n; ++i) edge[i].clear();
+	}
+
+	void add(int u, int v) { edge[u].push_back(v); }
+
+	bool dfs(int u) {
+		vis[u] = true;
+		for (vector<int>::iterator it = edge[u].begin(); it != edge[u].end();
+		     ++it) {
+			int v = mr[*it];
+			if (v == -1 || (!vis[v] && level[u] < level[v] && dfs(v))) {
+				ml[u] = *it;
+				mr[*it] = u;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	int matching(int n) {  // n for left
+		memset(vis, 0, sizeof(vis));
+		memset(level, 0, sizeof(level));
+		memset(ml, -1, sizeof(ml));
+		memset(mr, -1, sizeof(mr));
+		for (int match = 0;;) {
+			queue<int> que;
+			for (int i = 1; i <= n; ++i) {
+				if (ml[i] == -1) {
+					level[i] = 0;
+					que.push(i);
+				} else
+					level[i] = -1;
+			}
+			while (!que.empty()) {
+				int u = que.front();
+				que.pop();
+				for (vector<int>::iterator it = edge[u].begin();
+				     it != edge[u].end(); ++it) {
+					int v = mr[*it];
+					if (v != -1 && level[v] < 0) {
+						level[v] = level[u] + 1;
+						que.push(v);
+					}
+				}
+			}
+			for (int i = 1; i <= n; ++i) vis[i] = false;
+			int d = 0;
+			for (int i = 1; i <= n; ++i)
+				if (ml[i] == -1 && dfs(i)) ++d;
+			if (d == 0) return match;
+			match += d;
+		}
+	}
+} HK;
+```
+
+# 数据结构
+
+## 双栈模拟 (待更新)
+适用于询问区间双端点都单调的情况
+
+## 虚树 (待整理)
 
 > 1.如果栈为空,或者栈中只有一个元素,那么显然应该:
     $stk[++top]=u;$
@@ -1113,46 +1217,93 @@ void insert(int u){
 }
 ```
 
-> 也可以先将关键点按 $dfs$ 序排序，得到序列 $a$ , 然后对 $a_i$ 和 $a_{i+1}$ 分别求 $lca$，再将所得到的点进行去重。
-> 如果只是单次建虚树，则可以考虑 $dfs$ 如果一个节点存在两颗子树有关键点，那么这个节点也是关键点。
-
-## 树哈希 (待更新)
-
-
-## 斯坦纳树 (待更新)
-最小生成树是在给定的点集和边中寻求最短网络使所有点连通。而最小斯坦纳树允许在给定点外增加额外的点，使生成的最短网络开销最小。
-
-## 支配树(待更新)
-
-
-## prufer 序列 (待更新)
-
-## LGV 引理 (待更新)
-Lindström–Gessel–Viennot lemma，即 LGV 引理，可以用来处理有向无环图上不相交路径计数等问题。
-
-## 二分图匹配问题
-
-### 最长反链(待更新)
-
-### 霍尔定理
-
-二分图一侧的子图$V$有完全匹配，当且仅当对$V$的任意子集$A$,和$A$直接相连的点的个数大于等于$A$的点的个数。
-如果一个点集$S$满足上述条件,那么它一定是一个完美匹配的子集。
-霍尔定理也可以求匹配数:$|V| - max(|A| - T(A))$,$T(A)$是指另一侧中和$A$直接相连的点的个数。
-
-### 最小点覆盖方案构造
-对二分图做完最大匹配后，从左侧所有未被匹配的点出发，每次从左往右走一条未被匹配的边，从右往左走一条被匹配的边，沿途打标记。最终选择左边所有未被标记的点，加上右边所有被标记的点，此点集可作为一组最小点覆盖方案。其补集可作为一组最大点独立集方案。
-
-# 数据结构
-
-## 双栈模拟 (待更新)
-适用于询问区间双端点都单调的情况
 
 ## 长链剖分(待更新)
 > https://blog.bill.moe/long-chain-subdivision-notes/
+### 求距离为k的儿子个数(入点的时候减去，离开的时候加)
 
 ## 可持久化数据结构
 
+## 区间LCM
+带修改，区间范围在(1-100)之间的情况
+将因为超过一个数字至多一个超过10的质因子，因此可以用bitset优化超过10的质因子是否存在，小于10的部分用两个int记录2,3,5,7的LCM和GCD。
+```
+const int N = 305000;
+const int PRI_NUM = 21;
+char s[105];
+int pre4_pri[] = {2, 3, 5, 7},
+    pri[PRI_NUM] = {11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
+                    53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+struct node {
+	int val = 1;
+	int gcd = 1;
+	bitset<21> bits;
+	int get(int p) { // mod p
+		int ret = val % p;
+		for (int i = 0; i < PRI_NUM; ++i) {
+			if (bits.test(i)) ret = 1LL * ret * pri[i] % p;
+		}
+		return ret;
+	}
+	void change(int u) {
+		gcd = u;
+		val = 1;
+		for (int i = 0; i < 4; ++i) {
+			while (u % pre4_pri[i] == 0) {
+				val *= pre4_pri[i];
+				u /= pre4_pri[i];
+			}
+		}
+		for (int i = 0; i < PRI_NUM; ++i) {
+			bits[i] = u % pri[i] == 0;
+		}
+	}
+	void merge(node b, node c) {
+		gcd = __gcd(b.gcd, c.gcd);
+		val = b.val / __gcd(b.val, c.val) * c.val;
+		bits = b.bits | c.bits;
+	}
+} tr[N << 2];
+int lazy[N << 2];
+void build(int o, int L, int R) {
+	if (L + 1 == R) {
+		int u;
+		scanf("%d", &u);
+		tr[o].change(u);
+		return;
+	}
+	build(ls, L, mid);
+	build(rs, mid, R);
+	tr[o].merge(tr[ls], tr[rs]);
+}
+inline void pushdown(int o) {
+	if (lazy[o]) {
+		lazy[ls] = lazy[rs] = lazy[o];
+		tr[ls] = tr[rs] = tr[o];
+		lazy[o] = 0;
+	}
+}
+node Q(int o, int L, int R, int l, int r) {
+	if (l <= L && R <= r) return tr[o];
+	pushdown(o);
+	if (r <= mid) return Q(ls, L, mid, l, r);
+	if (l >= mid) return Q(rs, mid, R, l, r);
+	node ret;
+	ret.merge(Q(ls, L, mid, l, r), Q(rs, mid, R, l, r));
+	return ret;
+}
+void c(int o, int L, int R, int l, int r, int val) {
+	if (l <= L && R <= r) {
+		lazy[o] = val;
+		tr[o].change(val);
+		return;
+	}
+	pushdown(o);
+	if (l < mid) c(ls, L, mid, l, r, val);
+	if (r > mid) c(rs, mid, R, l, r, val);
+	tr[o].merge(tr[ls], tr[rs]);
+}
+```
 
 # 几何
 
@@ -1175,3 +1326,22 @@ for(int s = 1; s < (1<<n); s ++){
   }
 }
 ```
+
+### 股票问题
+对于购买区间[L,R]的股票可以看成第L天买入，第L+1天卖出，第L+1天买入，第L+2天卖出，...，将区间转化成单点问题
+
+### 思维是否各维度可以独立
+特别是在棋盘问题和二维平面中，如果可以独立思考可以方便的化简问题。
+
+### 位运算问题
+位运算问题的常用工具：SOSdp、线性基、FWT、字典树、按位考虑后类欧几里得、异或还可以考虑前缀和。
+
+### 极大区间统计(问区间内有多少个子段)
+考虑第一个变化的位置对答案的贡献，如果是区间询问可以特判第一位，从第二位开始。
+
+### 找规律
+注意循环节，二进制，组合数，阶乘，记得打表看一眼。
+
+### 求N(1<=1e18)项数列的值
+求N项的值的常用工具：找规律，循环节，矩乘，生成函数，BM，二进制分解。
+
