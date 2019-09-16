@@ -1,3 +1,14 @@
+<!-- <div align=center>
+<img src="th1.jpeg" width="120%" height="120%">
+</div>
+
+<div align=center>
+<font size=10>UESTC-hexisyztem</font>
+</div>
+
+<div STYLE="page-break-after: always;">
+</div> -->
+
 > UESTC_Default ---- hexisyztem
 > 未测试版本
 
@@ -14,6 +25,11 @@
   - [BSGS 大步-小步](#bsgs-%e5%a4%a7%e6%ad%a5-%e5%b0%8f%e6%ad%a5)
   - [MillerRabbin 素数测定](#millerrabbin-%e7%b4%a0%e6%95%b0%e6%b5%8b%e5%ae%9a)
   - [Pollard-Rho算法 (大整数质因子分解)](#pollard-rho%e7%ae%97%e6%b3%95-%e5%a4%a7%e6%95%b4%e6%95%b0%e8%b4%a8%e5%9b%a0%e5%ad%90%e5%88%86%e8%a7%a3)
+  - [矩阵相关](#%e7%9f%a9%e9%98%b5%e7%9b%b8%e5%85%b3)
+    - [矩阵的逆](#%e7%9f%a9%e9%98%b5%e7%9a%84%e9%80%86)
+    - [Gauss 消元](#gauss-%e6%b6%88%e5%85%83)
+  - [循环矩阵](#%e5%be%aa%e7%8e%af%e7%9f%a9%e9%98%b5)
+    - [快速求解循环矩阵乘积](#%e5%bf%ab%e9%80%9f%e6%b1%82%e8%a7%a3%e5%be%aa%e7%8e%af%e7%9f%a9%e9%98%b5%e4%b9%98%e7%a7%af)
   - [扩展欧拉定理](#%e6%89%a9%e5%b1%95%e6%ac%a7%e6%8b%89%e5%ae%9a%e7%90%86)
   - [类欧几里德算法](#%e7%b1%bb%e6%ac%a7%e5%87%a0%e9%87%8c%e5%be%b7%e7%ae%97%e6%b3%95)
   - [线性基](#%e7%ba%bf%e6%80%a7%e5%9f%ba)
@@ -53,7 +69,12 @@
   - [wqs二分](#wqs%e4%ba%8c%e5%88%86)
 - [图论](#%e5%9b%be%e8%ae%ba)
   - [斯坦纳树](#%e6%96%af%e5%9d%a6%e7%ba%b3%e6%a0%91)
+  - [虚树](#%e8%99%9a%e6%a0%91)
+  - [树哈希 (待更新)](#%e6%a0%91%e5%93%88%e5%b8%8c-%e5%be%85%e6%9b%b4%e6%96%b0)
+  - [斯坦纳树 (待更新)](#%e6%96%af%e5%9d%a6%e7%ba%b3%e6%a0%91-%e5%be%85%e6%9b%b4%e6%96%b0)
   - [支配树(待更新)](#%e6%94%af%e9%85%8d%e6%a0%91%e5%be%85%e6%9b%b4%e6%96%b0)
+  - [prufer 序列 (待更新)](#prufer-%e5%ba%8f%e5%88%97-%e5%be%85%e6%9b%b4%e6%96%b0)
+  - [LGV 引理 (待更新)](#lgv-%e5%bc%95%e7%90%86-%e5%be%85%e6%9b%b4%e6%96%b0)
   - [二分图匹配问题](#%e4%ba%8c%e5%88%86%e5%9b%be%e5%8c%b9%e9%85%8d%e9%97%ae%e9%a2%98)
     - [最长反链(待更新)](#%e6%9c%80%e9%95%bf%e5%8f%8d%e9%93%be%e5%be%85%e6%9b%b4%e6%96%b0)
     - [霍尔定理](#%e9%9c%8d%e5%b0%94%e5%ae%9a%e7%90%86)
@@ -61,7 +82,6 @@
     - [HopcroftKarp算法(二分图匹配)](#hopcroftkarp%e7%ae%97%e6%b3%95%e4%ba%8c%e5%88%86%e5%9b%be%e5%8c%b9%e9%85%8d)
 - [数据结构](#%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84)
   - [双栈模拟 (待更新)](#%e5%8f%8c%e6%a0%88%e6%a8%a1%e6%8b%9f-%e5%be%85%e6%9b%b4%e6%96%b0)
-  - [虚树 (待整理)](#%e8%99%9a%e6%a0%91-%e5%be%85%e6%95%b4%e7%90%86)
   - [长链剖分(待更新)](#%e9%95%bf%e9%93%be%e5%89%96%e5%88%86%e5%be%85%e6%9b%b4%e6%96%b0)
     - [求距离为k的儿子个数(入点的时候减去，离开的时候加)](#%e6%b1%82%e8%b7%9d%e7%a6%bb%e4%b8%bak%e7%9a%84%e5%84%bf%e5%ad%90%e4%b8%aa%e6%95%b0%e5%85%a5%e7%82%b9%e7%9a%84%e6%97%b6%e5%80%99%e5%87%8f%e5%8e%bb%e7%a6%bb%e5%bc%80%e7%9a%84%e6%97%b6%e5%80%99%e5%8a%a0)
   - [可持久化数据结构](#%e5%8f%af%e6%8c%81%e4%b9%85%e5%8c%96%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84)
@@ -414,8 +434,108 @@ void find(long long n, int c) {
 }
 ```
 
-## 扩展欧拉定理
+## 矩阵相关	
+### 矩阵的逆	
+> *f &nbsp; : &nbsp; 输入矩阵	
+> *g &nbsp; : &nbsp; 输出矩阵，f 矩阵的逆矩阵	
+``` C++	
+void inverse(){	
+    double temp;	
+    memset(g, 0, sizeof(g));	
+    for(int i = 0;i < n; i++) g[i][i] = 1.0;	
+    for(int i = 0;i < n; i++){	
+        for(int j = i;j < n; j++){	
+            if(fabs(f[j][i]) > eps){	
+                for(int k = 0;k < n; k++){	
+                    swap(f[i][k],f[j][k]);	
+                    swap(g[i][k],g[j][k]);	
+                }	
+                break;	
+            }	
+        }	
+        temp = f[i][i];	
+        for(int k = 0;k < n; k++)	
+        {	
+            f[i][k] /= temp;	
+            g[i][k] /= temp;	
+        }	
+        for(int j = 0;j < n; j++)	
+        {	
+            if(j != i && fabs(f[j][i]) > eps)	
+            {	
+                temp = f[j][i];	
+                for(int k = 0;k < n; k++){	
+                    g[j][k] -= g[i][k] * temp;	
+                    f[j][k] -= f[i][k] * temp;	
+                }	
+            }	
+        }	
+    }	
+}	
+```	
 
+### Gauss 消元	
+``` C++	
+double a[maxn][maxn],ans[maxn];	
+bool l[maxn];	
+// 输入矩阵大小，返回解空间维数，维数为0表示解唯一	
+// l[i]为true表示该数解唯一	
+int Gauss(int n) {	
+    int i,j,k,res = 0,r = 0;	
+    for(i = 0;i < n; i++) l[i] = false;	
+    for(i = 0;i < n; i++) {	
+        for(j = r;j < n; j++) {	
+            if(fabs(a[j][i]) > eps) {	
+                for(k = i;k <= n; k++) swap(a[j][k],a[r][k]);	
+                break;	
+            }	
+        }	
+        if(fabs(a[r][i]) < eps) {	
+            res++;	
+            continue;	
+        }	
+        for(j = 0;j < n; j++) {	
+            if(j != r && fabs(a[j][i] / a[r][i]) > eps) {	
+                double tmp = a[j][i] / a[r][i];	
+                for(k = i;k <= n; k++) a[j][k] -= tmp * a[r][k];	
+            }	
+        }	
+        l[i] = true;	
+        r++;	
+    }	
+    for(i = 0;i < n; i++) {	
+        if(l[i]) {	
+            for(j = 0;j < n; j++) {	
+                if(fabs(a[j][i]) > 0) ans[i] = a[j][n] / a[j][i];	
+            }	
+        }	
+    }	
+    return res;	
+}	
+```	
+
+## 循环矩阵	
+定义:第i行的向量为第i−1行的向量的各元素依次右移一位得到的结果	
+例如：	
+$$	
+\begin{aligned}	
+a_0 & & a_1 & & a_2 \\	
+a_2 & & a_0 & & a_1 \\	
+a_1 & & a_2 & & a_0 \\	
+\end{aligned} 	
+$$	
+性质:两个循环矩阵的乘积仍是循环矩阵
+
+### 快速求解循环矩阵乘积	
+设有 $n*n$ 的循环矩阵 $A,B$，求 $A*B=C$	
+定义 $f(x)= \sum_{i=0}^{n−1} a_i * x^i, g(x)= \sum_{i=0}^{n−1} b_i * x^i$	
+其中 $a_i, b_i$ 分别为矩阵 $A,B$ 第一行的元素	
+设 $h(x)=f(x)*g(x)= \sum_{i=0}^{n-1}c_i * x_i, c_i = \sum_{(j+k)\%n=i}a_j*b_k$(即循环卷积)	
+则 $h(x)$ 的系数即为矩阵 $C$ 的第一行的元素	
+故求 $A^m$ 即为求 $f(x)^m$,多项式快速幂即可	
+对于长度为 $2$ 的幂的多项式的 $m$ 次循环卷积,可以直接以当前长度作为 $fft$ 长度,不需要满足2倍关系	
+
+## 扩展欧拉定理
 计算 $a^b \;mod \; p$，当 $b$ 很大时，可以通过广义欧拉定理降幂:
 
 
@@ -976,15 +1096,15 @@ $p$ 不是素数，且 $p = \prod p_{i}^{\alpha_i}, p_i \in prime$ 时， 求出
 
 ## wqs二分
 将区间分成m段，每段的代价是x^2，用wqs二分处理m，剩下的部分使用斜率优化来做。
-```
+```c++
 #include <bits/stdc++.h>
 #define mid ((L + R) >> 1)
 using namespace std;
 const int N = 3005;
 typedef long long LL;
 int n, m;
-LL s[N], f[N], g[N];
-int q[N], l, r;
+LL s[N], f[N], g[N];//f表示dp值,g表示至少需要分成多少个区间
+int q[N], l, r;//斜率优化的数组
 inline LL sqr(LL x) { return 1LL * x * x; }
 LL k(int a, int b) { return f[a] + sqr(s[a]) - f[b] - sqr(s[b]); }
 int check(LL t) {
@@ -1031,14 +1151,14 @@ int main() {
 	return 0;
 }
 ```
-区间的代价是
-```
+区间的代价是到中位数的距离之和的情况。
+```c++
 #include <bits/stdc++.h>
 #define calc(x, y) f[x] + dis[x + 1][y]
 using namespace std;
 const int N = 3005;
 typedef long long LL;
-int n, m, a[N], pre[N], dis[N][N], f[N], g[N], q[N];
+int n, m, a[N], pre[N], dis[N][N], f[N], g[N], q[N];//f表示dp值,g表示至少需要分成多少个区间,ai表示q[i]为最优决策点的区间的右端点
 int check(int o) {
 	int L = 0, R = 1;
 	q[0] = 0;
@@ -1109,7 +1229,39 @@ int main() {
 ## 斯坦纳树
 最小生成树是在给定的点集和边中寻求最短网络使所有点连通。而最小斯坦纳树允许在给定点外增加额外的点，使生成的最短网络开销最小。
 
-## 支配树(待更新)
+## 虚树
+
+> 1.如果栈为空,或者栈中只有一个元素,那么显然应该:
+    $stk[++top]=u;$
+> 2.取 $lca=LCA(u,stk[top])$,如果 $lca=stk[top]$,则说明 $u$ 点应该接着 $stk[top]$ 点延长当前的树链.做操作: $stk[++top]=u;$
+> 3.如果 $lca≠stk[top]$,则说明 $u$ 与 $stk[top]$ 分属 $lca$ 的两颗不同的子树,且包含 $stk[top]$ 的这颗子树应该已经构建完成了,我们需要做的是: 将 $lca$ 的包含 $stk[top]$ 子树的那部分退栈,并将这部分建边形成虚树.如果 $lca$ 不在栈(树链)中,那么要把 $lca$ 也加入栈中,保证虚树的结构不出现问题,随后将 $u$ 加入栈中,以表延长树链.
+
+``` C++
+//实现按照 dfn 顺序逐个将关键点插入形成一颗虚树
+void insert(int u){
+    if(top <= 1) {stk[++top] = u;return ;}
+    int lca = LCA(u,stk[top]);
+    if(lca == stk[top]) {stk[++top] = u;return ;}
+    while(top > 1 && dfn[lca] <= stk[top-1]) {
+        addedge(stk[top-1],stk[top]);
+        --top;
+    }
+    if(lca != stk[top]) stk[++top] = lca;
+    stk[++top] = u;
+}
+```
+也可以先将关键点按 $dfs$ 序排序，得到序列 $a$ , 然后对 $a_i$ 和 $a_{i+1}$ 分别求 $lca$，再将所得到的点进行去重。	
+> 如果只是单次建虚树，则可以考虑 $dfs$ 如果一个节点存在两颗子树有关键点，那么这个节点也是关键点。	
+## 树哈希 (待更新)	
+
+## 斯坦纳树 (待更新)	
+最小生成树是在给定的点集和边中寻求最短网络使所有点连通。而最小斯坦纳树允许在给定点外增加额外的点，使生成的最短网络开销最小。	
+## 支配树(待更新)	
+
+## prufer 序列 (待更新)	
+
+## LGV 引理 (待更新)	
+Lindström–Gessel–Viennot lemma，即 LGV 引理，可以用来处理有向无环图上不相交路径计数等问题。
 
 ## 二分图匹配问题
 
@@ -1125,7 +1277,7 @@ int main() {
 对二分图做完最大匹配后，从左侧所有未被匹配的点出发，每次从左往右走一条未被匹配的边，从右往左走一条被匹配的边，沿途打标记。最终选择左边所有未被标记的点，加上右边所有被标记的点，此点集可作为一组最小点覆盖方案。其补集可作为一组最大点独立集方案。
 
 ### HopcroftKarp算法(二分图匹配)
-```
+```C++
 O(nsqrt(m)) be careful init
 const int maxN = 55 * 55;
 const int maxM = 55 * 55;
@@ -1195,27 +1347,6 @@ struct HopcroftKarp {
 ## 双栈模拟 (待更新)
 适用于询问区间双端点都单调的情况
 
-## 虚树 (待整理)
-
-> 1.如果栈为空,或者栈中只有一个元素,那么显然应该:
-    $stk[++top]=u;$
-> 2.取 $lca=LCA(u,stk[top])$,如果 $lca=stk[top]$,则说明 $u$ 点应该接着 $stk[top]$ 点延长当前的树链.做操作: $stk[++top]=u;$
-> 3.如果 $lca≠stk[top]$,则说明 $u$ 与 $stk[top]$ 分属 $lca$ 的两颗不同的子树,且包含 $stk[top]$ 的这颗子树应该已经构建完成了,我们需要做的是: 将 $lca$ 的包含 $stk[top]$ 子树的那部分退栈,并将这部分建边形成虚树.如果 $lca$ 不在栈(树链)中,那么要把 $lca$ 也加入栈中,保证虚树的结构不出现问题,随后将 $u$ 加入栈中,以表延长树链.
-
-``` C++
-//实现按照 dfn 顺序逐个将关键点插入形成一颗虚树
-void insert(int u){
-    if(top <= 1) {stk[++top] = u;return ;}
-    int lca = LCA(u,stk[top]);
-    if(lca == stk[top]) {stk[++top] = u;return ;}
-    while(top > 1 && dfn[lca] <= stk[top-1]) {
-        addedge(stk[top-1],stk[top]);
-        --top;
-    }
-    if(lca != stk[top]) stk[++top] = lca;
-    stk[++top] = u;
-}
-```
 
 
 ## 长链剖分(待更新)
@@ -1227,7 +1358,7 @@ void insert(int u){
 ## 区间LCM
 带修改，区间范围在(1-100)之间的情况
 将因为超过一个数字至多一个超过10的质因子，因此可以用bitset优化超过10的质因子是否存在，小于10的部分用两个int记录2,3,5,7的LCM和GCD。
-```
+```c++
 const int N = 305000;
 const int PRI_NUM = 21;
 char s[105];
@@ -1235,9 +1366,9 @@ int pre4_pri[] = {2, 3, 5, 7},
     pri[PRI_NUM] = {11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
                     53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 struct node {
-	int val = 1;
-	int gcd = 1;
-	bitset<21> bits;
+	int val = 1;//只含2,3,5,7素因子的区间LCM值
+	int gcd = 1;//只含2,3,5,7素因子的区间gcd值
+	bitset<21> bits;//每个素数是否存在
 	int get(int p) { // mod p
 		int ret = val % p;
 		for (int i = 0; i < PRI_NUM; ++i) {
