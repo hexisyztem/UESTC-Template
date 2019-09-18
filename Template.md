@@ -1189,7 +1189,7 @@ $$
 L = \frac{1}{|G|} \sum_{i}^{s} m ^ {c(g_i)}
 $$
 
-### min-max反演
+## min-max反演
 $$
 \max(S)=\sum_{T \subseteq S}(-1)^{|T|+1}\min(T)\\
 \min(S)=\sum_{T \subseteq S}(-1)^{|T|+1}\max(T)
